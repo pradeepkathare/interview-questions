@@ -1,0 +1,24 @@
+where is http request first comes to and who takes control to it?
+  In a Spring Boot application, when an HTTP request is received, it first goes through the following sequence:
+  Server Socket: The request is received by the server socket, which is typically managed by the embedded servlet container (e.g., Tomcat, Jetty) in a Spring Boot application.
+  Servlet Container: The servlet container (e.g., Tomcat) receives the request and creates an HttpServletRequest object to represent the request.
+  DispatcherServlet: The DispatcherServlet is the main servlet in Spring MVC that handles incoming requests. It's responsible for delegating the request to the appropriate handler (e.g., controller method).
+  Here's a high-level overview of the request processing flow:
+  Server Socket → Servlet Container (e.g., Tomcat)
+  Servlet Container → DispatcherServlet
+  DispatcherServlet → Handler Mapping (e.g., @RequestMapping)
+  Handler Mapping → Controller Method (e.g., @GetMapping, @PostMapping)
+  Controller Method → Service Layer (optional)
+  Service Layer → Repository Layer (optional)
+  Repository Layer → Database (optional)
+  Controller Method → DispatcherServlet (returns response)
+  DispatcherServlet → Servlet Container (returns response to client)
+
+How DispatcherServlet Configured
+  The DispatcherServlet is the central component that takes control of the request and delegates it to the appropriate handler. It's responsible for:
+  Mapping the request to a handler (e.g., controller method)
+  Invoking the handler and handling any exceptions that may occur
+  Returning the response to the client
+  In a Spring Boot application, the DispatcherServlet is automatically 
+  configured and registered with the servlet container. You can customize its behavior by using various configuration options and annotations 
+  (e.g., @RequestMapping, @GetMapping, @PostMapping).
